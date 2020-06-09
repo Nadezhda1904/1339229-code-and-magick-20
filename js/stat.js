@@ -31,8 +31,8 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var getRandomBlueColor = function () {
-  return 'hsl(250, ' + Math.random() * 100 + '%, 50%)';
+var getRandomBlueColor = function (colors) {
+  return 'hsl(' + colors + ',' + Math.random() * 100 + '%, 50%)';
 };
 
 window.renderStatistics = function (ctx, players, times) {
@@ -56,7 +56,7 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = getRandomBlueColor();
+      ctx.fillStyle = getRandomBlueColor(250);
     }
     ctx.fillRect(BAR_X + BAR_GAP * i, timeY + 20, BAR_WIDTH, BAR_MAX_HEIGHT * times[i] / maxTime);
   }
