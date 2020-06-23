@@ -10,9 +10,9 @@ var str = ' ';
 
 
 /* var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+userDialog.classList.remove('hidden');*/
 
-document.querySelector('.setup-similar').classList.remove('hidden');*/
+document.querySelector('.setup-similar').classList.remove('hidden');
 
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -24,15 +24,20 @@ function arrayRandElement(arr) {
   return arr[i];
 }
 
-for (var j = 0; j <= WIZARD_COUNT; j++) {
-  var wizards = [
-    {
+var wizards = [];
+
+var createWizard = function (count) {
+  for (var i = 0; i < count; i++) {
+    wizards.push({
       name: arrayRandElement(FIRST_NAMES) + str + arrayRandElement(SECOND_NAMES),
       coatColor: arrayRandElement(COAT_COLORS),
       eyesColor: arrayRandElement(EYES_COLORS)
-    }
-  ];
-}
+    });
+  }
+  return wizards;
+};
+
+createWizard(WIZARD_COUNT);
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -51,9 +56,15 @@ for (var i = 0; i < wizards.length; i++) {
 }
 
 similarListElement.appendChild(fragment);
+window.setup = {
+  FIREBALL_COLORS: FIREBALL_COLORS,
+  COAT_COLORS: COAT_COLORS,
+  EYES_COLORS: EYES_COLORS,
+  arrayRandElement: arrayRandElement
+};
 
 // Открытие и закрытия попапа
-var setupOpen = document.querySelector('.setup-open');
+/* var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = setup.querySelector('.setup-close');
 
@@ -142,17 +153,17 @@ var fireballColor = form.querySelector('input[name="fireball-color"]');
 
 // Изменение цвета по клику
 coatElement.addEventListener('click', function () {
-  coatElement.style.fill = COAT_COLORS[arrayRandElement(0, COAT_COLORS.length)];
+  coatElement.style.fill = arrayRandElement(COAT_COLORS);
   coatColor.value = coatElement.style.fill;
 });
 
 eyesElement.addEventListener('click', function () {
-  eyesElement.style.fill = EYES_COLORS[arrayRandElement(0, EYES_COLORS.length)];
+  eyesElement.style.fill = arrayRandElement(EYES_COLORS);
   eyesColor.value = eyesElement.style.fill;
 
 });
 
 fireballElement.addEventListener('click', function () {
-  fireballElement.style.backgroundColor = FIREBALL_COLORS[arrayRandElement(0, FIREBALL_COLORS.length)];
+  fireballElement.style.backgroundColor = arrayRandElement(FIREBALL_COLORS);
   fireballColor.value = fireballElement.style.backgroundColor;
-});
+});*/
