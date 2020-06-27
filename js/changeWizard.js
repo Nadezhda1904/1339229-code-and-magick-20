@@ -26,7 +26,8 @@
   });
 
   fireballElement.addEventListener('click', function () {
-    fireballElement.style.backgroundColor = window.setup.arrayRandElement(window.setup.FIREBALL_COLORS);
-    fireballColor.value = fireballElement.style.backgroundColor;
+    var colorFireball = window.setup.arrayRandElement(window.setup.FIREBALL_COLORS);
+    fireballElement.style.backgroundColor = colorFireball;
+    fireballColor.value = colorFireball;
   });
 })();
